@@ -1,499 +1,301 @@
 /* =========================
-   CSS 1 (DEV)
-   GENEL SAYFA + ÜST BAR + LOBİ TEMEL TASARIM
+   CSS 1 – TEMEL + LOBİ + MODAL
 ========================= */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+*{
+  box-sizing: border-box;
+  margin:0;
+  padding:0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-body {
-    background: #0e3b2e;
-    color: white;
-    min-height: 100vh;
+body{
+  background:#0e3b1f;
+  color:#fff;
 }
 
-/* ÜST BAR */
+/* Üst bar */
 
-#topBar {
-    width: 100%;
-    height: 70px;
-    background: #06241c;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 25px;
-    border-bottom: 3px solid #0a5c47;
+#topBar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 15px;
+  background:#083017;
 }
 
-#coinBox {
-    font-size: 20px;
-    font-weight: bold;
-    color: #ffd700;
+#coinBox{
+  font-weight:bold;
 }
 
-#accountButtons button {
-    margin-left: 10px;
-    padding: 8px 16px;
-    background: #0a5c47;
-    border: none;
-    color: white;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-#accountButtons button:hover {
-    background: #0f7a60;
-}
-
-/* LOBİ */
-
-#lobbyScreen {
-    padding: 30px;
-}
-
-#lobbyScreen h1 {
-    margin-bottom: 20px;
-}
-
-/* MASA KAYDIRMA ALANI */
-
-#tableScrollArea {
-    display: flex;
-    overflow-x: auto;
-    gap: 20px;
-    padding-bottom: 15px;
-}
-
-.tableCard {
-    min-width: 260px;
-    background: #114d3c;
-    padding: 15px;
-    border-radius: 10px;
-    border: 2px solid #0a5c47;
-}
-
-.tableCard h3 {
-    margin-bottom: 10px;
-}
-
-.tableCard button {
-    margin-top: 10px;
-    padding: 6px 12px;
-    background: #0a5c47;
-    border: none;
-    color: white;
-    cursor: pointer;
-}
-
-.tableCard button:hover {
-    background: #0f7a60;
-}
-
-/* AI MASA ÖZEL RENK */
-
-.aiTable {
-    background: #3a114d;
-    border-color: #6a1b9a;
-}
-
-/* MASA OLUŞTUR BUTONU */
-
-#createTableButton {
-    margin-top: 25px;
-    padding: 12px 20px;
-    font-size: 16px;
-    background: #0a5c47;
-    border: none;
-    cursor: pointer;
-}
-
-#createTableButton:hover {
-    background: #0f7a60;
-}
-
-/* MODAL */
-
-.hidden {
-    display: none;
-}
-
-#createTableModal {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.modalInner {
-    background: #114d3c;
-    padding: 25px;
-    border-radius: 12px;
-    width: 300px;
-}
-
-.modalInner input {
-    width: 100%;
-    margin: 8px 0 15px 0;
-    padding: 6px;
-}
-/* =========================
-   CSS 2 (DEV)
-   MASA KAYDIRMA KONTROLLERİ + CANLI MASA KART DETAYLARI
-========================= */
-
-/* KAYDIRMA OKLARI VE GÖRÜNÜM */
-
-#tableScrollControls {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-#scrollLeft,
-#scrollRight {
-    background: #0a5c47;
-    border: none;
-    color: white;
-    font-size: 22px;
-    padding: 10px 14px;
-    cursor: pointer;
-    border-radius: 6px;
-    transition: 0.2s;
-}
-
-#scrollLeft:hover,
-#scrollRight:hover {
-    background: #0f7a60;
-}
-
-#tableViewport {
-    overflow: hidden;
-    width: 100%;
-}
-
-#tableList {
-    display: flex;
-    gap: 20px;
-    transition: transform 0.25s ease;
-}
-
-/* CANLI MASA KARTI */
-
-.liveTable {
-    min-width: 260px;
-    background: #143f36;
-    border: 2px solid #1e7a63;
-    border-radius: 12px;
-    padding: 14px;
-}
-
-/* MASA BAŞLIK */
-
-.tableHeader {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 8px;
-}
-
-.tableName {
-    font-weight: bold;
-    font-size: 17px;
-}
-
-.tableRounds {
-    color: #ffd700;
-}
-
-/* OYUNCU SAYISI */
-
-.tablePlayers {
-    font-size: 14px;
-    margin-bottom: 6px;
-}
-
-.playerCount {
-    font-weight: bold;
-}
-
-/* MASA DURUMU */
-
-.tableStatus {
-    font-size: 13px;
-    padding: 5px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-
-.tableStatus.waiting {
-    background: #7a5c00;
-}
-
-.tableStatus.ready {
-    background: #0b7a2a;
-}
-
-/* MASAYA KATIL BUTONU */
-
-.joinTableBtn {
-    width: 100%;
-    padding: 8px;
-    background: #1e7a63;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.joinTableBtn:hover {
-    background: #2aa889;
-}
-
-/* GELİŞMİŞ MASA AYARLARI */
-
-#advancedCreateTable {
-    margin-top: 20px;
-    padding: 15px;
-    background: #0e3b2e;
-    border: 2px dashed #1e7a63;
-    border-radius: 10px;
-}
-
-#advancedCreateTable label {
-    display: block;
-    margin-top: 8px;
-    font-size: 14px;
-}
-
-#advancedCreateTable input,
-#advancedCreateTable select {
-    width: 100%;
-    margin-top: 4px;
-    padding: 6px;
-    background: #143f36;
-    color: white;
-    border: 1px solid #1e7a63;
-    border-radius: 4px;
-}
-/* =========================
-   CSS 3 (DEV)
-   TAM OYUN MASASI + OKEY TAŞLARI + OYUNCU ALANLARI
-========================= */
-
-/* OYUN ALANI GENEL */
-
-#fullGameTableArea {
-    padding: 20px;
-}
-
-/* ÜST BİLGİ BAR */
-
-#gameTopInfo {
-    display: flex;
-    justify-content: space-between;
-    background: #06241c;
-    padding: 10px 15px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-}
-
-/* MASA ANA YÜZEY */
-
-#okeyMainTable {
-    position: relative;
-    background: #0b5c46;
-    height: 420px;
-    border-radius: 20px;
-    border: 5px solid #083c2e;
-}
-
-/* ORTA ALAN */
-
-#centerZone {
-    position: absolute;
-    top: 45%;
-    left: 45%;
-}
-
-#closedDeck,
-#openDiscard {
-    background: #143f36;
-    padding: 10px;
-    border-radius: 6px;
-    margin-bottom: 8px;
-}
-
-/* OYUNCU ALANLARI */
-
-.playerArea {
-    position: absolute;
-    background: rgba(0,0,0,0.25);
-    padding: 8px;
-    border-radius: 8px;
-}
-
-.topPlayer {
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.leftPlayer {
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.rightPlayer {
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.bottomPlayer {
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.playerName {
-    font-weight: bold;
-}
-
-.playerScore {
-    font-size: 13px;
-    margin-bottom: 5px;
-}
-
-/* GİZLİ TAŞLAR */
-
-.hiddenTiles {
-    height: 25px;
-    width: 140px;
-    background: #06241c;
-    border-radius: 4px;
-}
-
-/* SENİN TAŞLARIN */
-
-#myTilesRack {
-    display: flex;
-    gap: 4px;
-    margin-top: 5px;
-}
+/* Butonlar */
 
-/* OKEY TAŞ STİLİ */
-
-.tile {
-    width: 32px;
-    height: 45px;
-    background: #ffffff;
-    color: #000;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    border: 2px solid #c9c9c9;
-    cursor: pointer;
-    transition: 0.15s;
-}
-
-.tile:hover {
-    transform: translateY(-6px);
-}
-
-/* ALT KONTROL PANELİ */
-
-#gameControlPanel {
-    margin-top: 15px;
-    display: flex;
-    gap: 10px;
-}
-
-#gameControlPanel button {
-    padding: 8px 14px;
-    background: #0a5c47;
-    border: none;
-    color: white;
-    border-radius: 6px;
-    cursor: pointer;
+button{
+  padding:8px 14px;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
 }
 
-#gameControlPanel button:hover {
-    background: #0f7a60;
-}
-
-/* SOHBET */
-
-#inGameChat {
-    margin-top: 15px;
-    background: #06241c;
-    padding: 10px;
-    border-radius: 8px;
-    max-width: 300px;
-}
+/* Masa listesi */
 
-#chatMessages {
-    height: 120px;
-    overflow-y: auto;
-    background: #021914;
-    padding: 5px;
-    margin-bottom: 6px;
+#liveTables{
+  display:flex;
+  flex-wrap:wrap;
+  gap:15px;
+  padding:20px;
 }
 
-.chatMsg {
-    font-size: 13px;
-    margin-bottom: 4px;
+.tableCard{
+  width:220px;
+  background:#12552c;
+  border-radius:12px;
+  padding:12px;
 }
 
-.chatMsg.system {
-    color: #ffd700;
+.tableHeader{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:8px;
 }
 
-#chatInputArea {
-    display: flex;
-    gap: 6px;
+.tableStatus.waiting{
+  color:#ffd966;
 }
 
-#chatInput {
-    flex: 1;
-    padding: 5px;
+.tableStatus.ready{
+  color:#00ff9c;
 }
 
-#sendChatBtn {
-    padding: 5px 10px;
-}
-
-/* DURUM GÖSTERGELERİ */
+/* Modal */
 
-#playerStatusIndicators {
-    margin-top: 12px;
-}
-
-.statusItem {
-    font-size: 13px;
-    margin-bottom: 3px;
-}
 .modal{
-    position: relative;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.6);
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
-.modalClose{
-    position:absolute;
-    right:10px;
-    top:10px;
-    background:transparent;
-    border:none;
-    font-size:22px;
-    cursor:pointer;
+.modalContent{
+  background:#0b4725;
+  padding:20px;
+  border-radius:12px;
+  width:300px;
 }
+
+.hidden{
+  display:none !important;
+}
+
+/* Çarpı */
+
 .modalClose{
-  z-index: 99999;
-  pointer-events: auto;
+  position:absolute;
+  right:15px;
+  top:10px;
+  background:none;
+  color:white;
+  font-size:22px;
+}
+/* =========================
+   CSS 2 – GERÇEK OKEY MASASI + TAŞLAR
+========================= */
+
+/* Oyun ekranı */
+
+#gameScreen{
+  padding:20px;
+}
+
+/* Masa (yeşil keçe hissi) */
+
+.gameTable{
+  width:100%;
+  max-width:900px;
+  margin:20px auto;
+  background:#0b5a2a;
+  border-radius:30px;
+  padding:25px;
+  box-shadow:0 0 40px rgba(0,0,0,0.5) inset;
+}
+
+/* Ortadaki atılan taş */
+
+#openDiscard{
+  width:120px;
+  height:70px;
+  background:#083b1b;
+  border-radius:12px;
+  margin:0 auto 20px auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
+}
+
+/* Oyuncu isimleri */
+
+.playerName{
+  font-size:14px;
+  text-align:center;
+  margin-bottom:8px;
+}
+
+/* Taş rafı */
+
+#myTilesRack{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  justify-content:center;
+  background:#063017;
+  padding:10px;
+  border-radius:12px;
+}
+
+/* Taş */
+
+.tile{
+  width:40px;
+  height:55px;
+  background:#fff;
+  color:#000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:6px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* Seçili taş */
+
+.tile.selected{
+  transform:translateY(-10px);
+  box-shadow:0 0 8px gold;
+}
+
+/* Okey renkleri */
+
+.tile.red{ color:#ff3b3b; }
+.tile.blue{ color:#2ea8ff; }
+.tile.black{ color:#000; }
+.tile.orange{ color:#ff9c2e; }
+
+/* Sohbet */
+
+#chatMessages{
+  max-height:120px;
+  overflow:auto;
+  background:#062913;
+  padding:6px;
+  border-radius:6px;
+}
+
+.chatMsg{
+  font-size:13px;
+}
+
+.chatMsg.system{
+  color:#9cffb0;
+}
+/* =========================
+   CSS 3 – 4 OYUNCU POZİSYONU
+========================= */
+
+.tablePlayersArea{
+  position:relative;
+  width:100%;
+  max-width:900px;
+  margin:0 auto;
+}
+
+/* Oyuncu yerleri */
+
+.playerSlot{
+  position:absolute;
+  background:#063017;
+  padding:6px 10px;
+  border-radius:8px;
+  font-size:13px;
+}
+
+/* Alt (sen) */
+.player-bottom{
+  bottom:-30px;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+/* Üst */
+.player-top{
+  top:-30px;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+/* Sol */
+.player-left{
+  left:-80px;
+  top:50%;
+  transform:translateY(-50%);
+}
+
+/* Sağ */
+.player-right{
+  right:-80px;
+  top:50%;
+  transform:translateY(-50%);
+}
+
+/* Raf iki satır düzeni */
+
+#myTilesRack{
+  display:grid;
+  grid-template-columns:repeat(14,40px);
+  grid-auto-rows:55px;
+  gap:5px;
+}
+#okeyTableSurface{
+    position:relative;
+}
+
+/* Ortak oyuncu stil */
+.playerSlot{
+    position:absolute;
+    background:#063017;
+    padding:6px 10px;
+    border-radius:8px;
+    color:white;
+}
+
+/* Oyuncu yerleri */
+
+#player1{ /* SEN */
+    bottom:-35px;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+#player2{ /* ÜST */
+    top:-35px;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+#player3{ /* SOL */
+    left:-80px;
+    top:50%;
+    transform:translateY(-50%);
+}
+
+#player4{ /* SAĞ */
+    right:-80px;
+    top:50%;
+    transform:translateY(-50%);
 }

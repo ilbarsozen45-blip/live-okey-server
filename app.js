@@ -16,6 +16,63 @@ const state = {
     playerName: "Misafir"
 };
 
+/* ======================================================
+   GERÇEK OKEY DESTESİ OLUŞTUR + KARIŞTIR + DAĞIT
+====================================================== */
+
+let realDeck = [];
+
+function createRealOkeyDeck(){
+
+    const colors = ["red","blue","black","orange"];
+    const deck = [];
+
+    // 1–13 arası her renkten İKİ SET (toplam 104 taş)
+    colors.forEach(color=>{
+        for(let n=1;n<=13;n++){
+            deck.push({color, value:n});
+            deck.push({color, value:n});
+        }
+    });
+
+    // 2 sahte joker (göstergeye göre okey olacak)
+    deck.push({color:"joker", value:"★"});
+    deck.push({color:"joker", value:"★"});
+
+    realDeck = shuffle(deck);
+}
+
+function shuffle(array){
+    for(let i=array.length-1;i>0;i--){
+        const j=Math.floor(Math.random()*(i+1));
+        [array[i],array[j]]=[array[j],array[i]];
+    }
+    return array;
+}
+
+function dealTilesToPlayer(){
+
+    const rack = document.getElementById("myTilesRack");
+    if(!rack) return;
+
+    rack.innerHTML="";
+
+    for(let i=0;i<14;i++){
+
+        const tileData = realDeck.pop();
+
+        const tile = document.createElement("div");
+        tile.className = "tile " + (tileData.color || "");
+
+        tile.textContent = tileData.value;
+
+        rack.appendChild(tile);
+    }
+}
+
+
+
+
 /* =========================
    BAŞLANGIÇ
 ========================= */
@@ -274,7 +331,8 @@ function enterGameFromTable(tableId) {
     document.getElementById("gameTableName").textContent = "Masa Adı: " + table.name;
     document.getElementById("gameRoundInfo").textContent = "El: 1 / " + table.rounds;
 
-    generateRealTiles();
+    createRealOkeyDeck();
+dealTilesToPlayer();
 }
 
 /* joinTable fonksiyonunu genişlet */
@@ -404,6 +462,9 @@ if (aiBtn) {
         document.getElementById("gameStatus").textContent = "AI Oyuncular Hazır";
 
         spawnAIBots();
+
+createRealOkeyDeck();
+dealTilesToPlayer();
 
         function generateRealTiles() {
 

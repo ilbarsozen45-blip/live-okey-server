@@ -95,6 +95,20 @@ window.addEventListener("DOMContentLoaded", () => {
         document.getElementById("createTableCloseX")
     ?.addEventListener("click", closeCreateModal);
 
+
+    function buildGrid(){
+    const grid = document.getElementById("meldGrid");
+    if(!grid) return;
+
+    for(let i=0;i<26*8;i++){
+        const cell=document.createElement("div");
+        grid.appendChild(cell);
+    }
+}
+
+buildGrid();
+
+
 });
 
 
@@ -484,6 +498,8 @@ dealTilesToPlayer();
         tile.className = "tile " + color;
         tile.textContent = num;
 
+        tile.draggable = true;
+
         rack.appendChild(tile);
     }
 }
@@ -537,7 +553,7 @@ const originalRenderTables = renderTables;
 renderTables = function() {
     originalRenderTables();
     document.dispatchEvent(new Event("tablesRendered"));
-    
+
 };
 /* =========================
    JS 4 (DEV)
@@ -937,3 +953,21 @@ window.addEventListener("load", () => {
 window.closeCreateModal = closeCreateModal;
 
 connectOnline("https://live-okey-server-production.up.railway.app");
+
+
+document.addEventListener("dragstart", e=>{
+    if(e.target.classList.contains("tile")){
+        e.dataTransfer.setData("tile","1");
+        window.draggedTile=e.target;
+    }
+});
+
+document.addEventListener("dragover", e=>{
+    if(e.target.closest("#meldGrid")) e.preventDefault();
+});
+
+document.addEventListener("drop", e=>{
+    if(e.target.closest("#meldGrid")){
+        e.target.appendChild(window.draggedTile);
+    }
+});

@@ -299,3 +299,316 @@ button{
     top:50%;
     transform:translateY(-50%);
 }
+/* ======================================================
+   CSS-4 — TAM ARAYÜZ DÜZENİ + GERÇEKÇİ OKEY MASASI + TAŞLAR
+====================================================== */
+
+*{
+    box-sizing:border-box;
+    font-family:Segoe UI,Arial;
+}
+
+body{
+    margin:0;
+    background:#0e2a2a;
+    color:white;
+}
+
+/* TOP BAR */
+
+#topBar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px 20px;
+    background:#063737;
+    border-bottom:2px solid #0fa3a3;
+}
+
+#coinBox{
+    font-weight:bold;
+    font-size:18px;
+}
+
+#accountButtons button{
+    margin-left:8px;
+    padding:8px 12px;
+    background:#00b894;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+/* LOBBY */
+
+#lobbyScreen{
+    padding:20px;
+    text-align:center;
+}
+
+#tableScrollArea{
+    display:flex;
+    gap:20px;
+    overflow-x:auto;
+    padding:20px;
+}
+
+/* TABLE CARD */
+
+.tableCard{
+    background:#114545;
+    border-radius:12px;
+    padding:16px;
+    min-width:220px;
+    box-shadow:0 0 10px rgba(0,0,0,0.4);
+}
+
+.tableCard button{
+    margin-top:10px;
+    padding:6px 10px;
+    background:#00cec9;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.aiTable{
+    background:#6c5ce7;
+}
+
+/* CREATE BUTTON */
+
+#createTableButton{
+    margin-top:20px;
+    padding:12px 20px;
+    font-size:18px;
+    background:#0984e3;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+/* MODAL */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.6);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.modalInner{
+    background:#083d3d;
+    padding:30px;
+    border-radius:12px;
+    width:300px;
+}
+
+.modalClose{
+    position:absolute;
+    right:15px;
+    top:15px;
+    font-size:22px;
+    background:none;
+    color:white;
+    border:none;
+    cursor:pointer;
+}
+
+.hidden{
+    display:none;
+}
+
+/* GAME SCREEN */
+
+#gameScreen{
+    padding:20px;
+}
+
+/* TABLE SURFACE */
+
+#okeyMainTable{
+    position:relative;
+    background:#0b5d3b;
+    height:520px;
+    border-radius:30px;
+    box-shadow:0 0 25px rgba(0,0,0,0.7) inset;
+}
+
+/* CENTER ZONE */
+
+#centerZone{
+    position:absolute;
+    top:40%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+
+#closedDeck,#openDiscard{
+    background:#2d3436;
+    padding:15px;
+    border-radius:8px;
+    margin:6px;
+}
+
+/* PLAYER AREAS */
+
+.playerArea{
+    position:absolute;
+    text-align:center;
+}
+
+.topPlayer{top:10px; left:50%; transform:translateX(-50%);}
+.leftPlayer{left:10px; top:50%; transform:translateY(-50%);}
+.rightPlayer{right:10px; top:50%; transform:translateY(-50%);}
+.bottomPlayer{bottom:10px; left:50%; transform:translateX(-50%);}
+
+.playerName{
+    font-weight:bold;
+}
+
+.playerTiles{
+    display:flex;
+}
+
+/* YOUR RACK */
+
+#myTilesRack{
+    display:flex;
+    gap:6px;
+    margin-top:8px;
+}
+
+/* TILES */
+
+.tile{
+    width:34px;
+    height:48px;
+    background:white;
+    border-radius:6px;
+    color:black;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 2px 4px rgba(0,0,0,0.5);
+}
+
+.tile.selected{
+    transform:translateY(-8px);
+    border:2px solid yellow;
+}
+
+/* COLORS */
+
+.tile.red{color:#d63031;}
+.tile.blue{color:#0984e3;}
+.tile.black{color:#2d3436;}
+.tile.orange{color:#e17055;}
+
+/* CONTROL PANEL */
+
+#gameControlPanel{
+    margin-top:10px;
+    display:flex;
+    gap:10px;
+    justify-content:center;
+}
+
+#gameControlPanel button{
+    padding:10px 14px;
+    border:none;
+    border-radius:8px;
+    background:#00b894;
+    cursor:pointer;
+}
+
+/* CHAT */
+
+#inGameChat{
+    position:fixed;
+    right:0;
+    top:120px;
+    width:260px;
+    background:#062f2f;
+    height:350px;
+    display:flex;
+    flex-direction:column;
+}
+
+#chatMessages{
+    flex:1;
+    overflow:auto;
+    padding:10px;
+}
+
+.chatMsg{
+    background:#0a4b4b;
+    margin-bottom:6px;
+    padding:6px;
+    border-radius:6px;
+}
+
+.chatMsg.system{
+    background:#6c5ce7;
+}
+
+#chatInputArea{
+    display:flex;
+}
+
+#chatInput{
+    flex:1;
+    padding:6px;
+}
+
+#sendChatBtn{
+    padding:6px;
+}
+
+/* PLAYER STATUS */
+
+#playerStatusIndicators{
+    margin-top:10px;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+}
+
+.statusItem{
+    background:#065f5f;
+    padding:6px 10px;
+    border-radius:6px;
+}
+#realBoardArea{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-top:20px;
+}
+
+#meldGrid{
+    width:700px;
+    height:220px;
+    background:#0f7a32;
+    border:4px solid #caa94c;
+    display:grid;
+    grid-template-columns:repeat(26,1fr);
+    grid-template-rows:repeat(8,1fr);
+    gap:2px;
+}
+
+#meldGrid div{
+    background:rgba(255,255,255,0.05);
+}
+
+#rightDropZone{
+    width:120px;
+    height:220px;
+    background:#0f7a32;
+    border:4px solid #caa94c;
+    margin-left:10px;
+}

@@ -25,15 +25,18 @@ window.addEventListener("DOMContentLoaded", () => {
     updateCoinUI();
 
     document.getElementById("createTableButton")
-        .addEventListener("click", openCreateModal);
+        ?.addEventListener("click", openCreateModal);
 
     document.getElementById("createTableCancel")
-        .addEventListener("click", closeCreateModal);
+        ?.addEventListener("click", () => {
+            closeCreateModal();
+        });
 
     document.getElementById("createTableConfirm")
-        .addEventListener("click", createTable);
+        ?.addEventListener("click", createTable);
 
 });
+
 
 /* =========================
    SANAL PARA
@@ -267,6 +270,8 @@ function enterGameFromTable(tableId) {
 
     document.getElementById("gameTableName").textContent = "Masa Adı: " + table.name;
     document.getElementById("gameRoundInfo").textContent = "El: 1 / " + table.rounds;
+
+    generateRealTiles();
 }
 
 /* joinTable fonksiyonunu genişlet */
@@ -396,6 +401,29 @@ if (aiBtn) {
         document.getElementById("gameStatus").textContent = "AI Oyuncular Hazır";
 
         spawnAIBots();
+
+        function generateRealTiles() {
+
+    const rack = document.getElementById("myTilesRack");
+    if (!rack) return;
+
+    rack.innerHTML = "";
+
+    const colors = ["red","blue","black","orange"];
+
+    for (let i = 0; i < 14; i++) {
+
+        const num = Math.floor(Math.random() * 13) + 1;
+        const color = colors[Math.floor(Math.random() * colors.length)];
+
+        const tile = document.createElement("div");
+        tile.className = "tile " + color;
+        tile.textContent = num;
+
+        rack.appendChild(tile);
+    }
+}
+
     });
 
 }

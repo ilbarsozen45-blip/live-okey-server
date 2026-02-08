@@ -35,6 +35,9 @@ window.addEventListener("DOMContentLoaded", () => {
     document.getElementById("createTableConfirm")
         ?.addEventListener("click", createTable);
 
+        document.getElementById("createTableCloseX")
+    ?.addEventListener("click", closeCreateModal);
+
 });
 
 

@@ -480,3 +480,16 @@ body {
     font-size: 13px;
     margin-bottom: 3px;
 }
+.modal{
+    position: relative;
+}
+
+.modalClose{
+    position:absolute;
+    right:10px;
+    top:10px;
+    background:transparent;
+    border:none;
+    font-size:22px;
+    cursor:pointer;
+}

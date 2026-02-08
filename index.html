@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canlı Okey Salonu</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+<!-- ÜST BAR -->
+<header id="topBar">
+    <div id="coinBox">
+        Kazanılan Sanal Para : <span id="coinAmount">0</span>
+    </div>
+
+    <div id="accountButtons">
+        <button id="loginBtn">Oturum Aç</button>
+        <button id="registerBtn">Kayıt Ol</button>
+    </div>
+</header>
+
+<!-- ANA LOBİ -->
+<main id="lobbyScreen">
+
+    <h1>Okey Salonları</h1>
+
+    <!-- MASA KAYDIRMA ALANI -->
+    <div id="tableScrollArea">
+
+        <!-- AI MASASI -->
+        <div class="tableCard aiTable">
+            <h3>Yapay Zeka Masası</h3>
+            <p>4 AI Oyuncu</p>
+            <button class="joinAiBtn">İzle</button>
+        </div>
+
+        <!-- CANLI MASALAR BURAYA JS EKLEYECEK -->
+        <div id="liveTables"></div>
+
+    </div>
+
+    <button id="createTableButton">Masa Oluştur</button>
+
+</main>
+
+<!-- MASA OLUŞTURMA MODAL -->
+<div id="createTableModal" class="hidden">
+
+    <div class="modalInner">
+
+        <h2>Yeni Masa Oluştur</h2>
+
+        <label>Masa Adı</label>
+        <input type="text" id="newTableName">
+
+        <label>Kaç El Oynanacak</label>
+        <input type="number" id="newTableRound" min="1" max="50">
+
+        <button id="createTableConfirm">Oluştur</button>
+        <button id="createTableCancel">İptal</button>
+
+    </div>
+
+</div>
+
+<!-- OYUN EKRANI BAŞLANGIÇ İSKELETİ -->
+<section id="gameScreen" class="hidden">
+
+    <div id="okeyTableSurface">
+
+        <div id="playersArea">
+            <div class="playerSlot" id="player1">Oyuncu 1</div>
+            <div class="playerSlot" id="player2">Oyuncu 2</div>
+            <div class="playerSlot" id="player3">Oyuncu 3</div>
+            <div class="playerSlot" id="player4">Oyuncu 4</div>
+        </div>
+
+        <div id="tilesRack">
+            <!-- Taşlar sonra eklenecek -->
+        </div>
+
+    </div>
+
+</section>
+<!-- =========================
+     HTML - 2 (DEV)
+     LOBİ İÇİ MASA KART ŞABLONU + KAYDIRMA OKLARI
+========================= -->
+
+<!-- MASA KAYDIRMA KONTROLLERİ -->
+<div id="tableScrollControls">
+
+    <button id="scrollLeft">◀</button>
+
+    <div id="tableViewport">
+
+        <!-- MASA LİSTESİ -->
+        <div id="tableList">
+
+            <!-- ÖRNEK CANLI MASA ŞABLONU (JS ÇOĞALTACAK) -->
+            <div class="tableCard liveTable">
+
+                <div class="tableHeader">
+                    <span class="tableName">Örnek Masa</span>
+                    <span class="tableRounds">12 El</span>
+                </div>
+
+                <div class="tablePlayers">
+                    <span>Oyuncular:</span>
+                    <span class="playerCount">0 / 4</span>
+                </div>
+
+                <div class="tableStatus waiting">
+                    En az 3 kişi olmadan oyun başlamaz
+                </div>
+
+                <button class="joinTableBtn">
+                    Masaya Katıl
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <button id="scrollRight">▶</button>
+
+</div>
+
+<!-- CANLI MASA OLUŞTURMA DETAY FORMU (GENİŞLETİLMİŞ) -->
+<div id="advancedCreateTable" class="hidden">
+
+    <h3>Masa Ayarları</h3>
+
+    <label>Masa Şifresi (İsteğe Bağlı)</label>
+    <input type="password" id="tablePassword">
+
+    <label>Oyun Türü</label>
+    <select id="gameType">
+        <option value="101">101 Okey</option>
+    </select>
+
+    <label>Maksimum Oyuncu</label>
+    <select id="maxPlayers">
+        <option value="4">4 Oyuncu</option>
+    </select>
+
+    <label>Canlı Sohbet Açık mı?</label>
+    <select id="chatEnabled">
+        <option value="yes">Evet</option>
+        <option value="no">Hayır</option>
+    </select>
+
+</div>
+<!-- =========================
+     HTML - 3 (DEV)
+     TAM OYUN MASASI DETAYLI YAPI
+========================= -->
+
+<section id="fullGameTableArea" class="hidden">
+
+    <!-- MASA ÜST BİLGİ BAR -->
+    <div id="gameTopInfo">
+
+        <div id="gameTableName">Masa Adı: --</div>
+        <div id="gameRoundInfo">El: 0 / 0</div>
+        <div id="gameStatus">Durum: Oyuncular Bekleniyor</div>
+
+    </div>
+
+    <!-- OKEY MASA YÜZEYİ -->
+    <div id="okeyMainTable">
+
+        <!-- ORTA ALAN (YERDEN TAŞ ÇEKME + ATILAN TAŞ) -->
+        <div id="centerZone">
+
+            <div id="deckArea">
+                <div id="closedDeck">Kapalı Taşlar</div>
+                <div id="openDiscard">Son Atılan Taş</div>
+            </div>
+
+        </div>
+
+        <!-- ÜST OYUNCU -->
+        <div class="playerArea topPlayer">
+            <div class="playerName">Oyuncu Üst</div>
+            <div class="playerScore">Puan: 0</div>
+            <div class="playerTiles hiddenTiles"></div>
+        </div>
+
+        <!-- SOL OYUNCU -->
+        <div class="playerArea leftPlayer">
+            <div class="playerName">Oyuncu Sol</div>
+            <div class="playerScore">Puan: 0</div>
+            <div class="playerTiles hiddenTiles"></div>
+        </div>
+
+        <!-- SAĞ OYUNCU -->
+        <div class="playerArea rightPlayer">
+            <div class="playerName">Oyuncu Sağ</div>
+            <div class="playerScore">Puan: 0</div>
+            <div class="playerTiles hiddenTiles"></div>
+        </div>
+
+        <!-- SEN (ALT OYUNCU) -->
+        <div class="playerArea bottomPlayer">
+
+            <div class="playerName">Sen</div>
+            <div class="playerScore">Puan: 0</div>
+
+            <!-- SENİN TAŞLARIN -->
+            <div id="myTilesRack">
+
+                <!-- ÖRNEK TAŞLAR -->
+                <div class="tile">1</div>
+                <div class="tile">2</div>
+                <div class="tile">3</div>
+                <div class="tile">4</div>
+                <div class="tile">5</div>
+                <div class="tile">6</div>
+                <div class="tile">7</div>
+                <div class="tile">8</div>
+                <div class="tile">9</div>
+                <div class="tile">10</div>
+                <div class="tile">11</div>
+                <div class="tile">12</div>
+                <div class="tile">13</div>
+                <div class="tile">Okey</div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ALT KONTROL PANELİ -->
+    <div id="gameControlPanel">
+
+        <button id="drawTileBtn">Yerden Taş Çek</button>
+        <button id="takeDiscardBtn">Ortadaki Taşı Al</button>
+        <button id="endTurnBtn">Eli Bitir</button>
+        <button id="leaveTableBtn">Masadan Kalk</button>
+
+    </div>
+
+    <!-- OYUN İÇİ SOHBET -->
+    <div id="inGameChat">
+
+        <div id="chatMessages">
+            <div class="chatMsg system">Sohbet başlatıldı.</div>
+        </div>
+
+        <div id="chatInputArea">
+            <input type="text" id="chatInput" placeholder="Mesaj yaz...">
+            <button id="sendChatBtn">Gönder</button>
+        </div>
+
+    </div>
+
+    <!-- OYUNCU DURUM GÖSTERGELERİ -->
+    <div id="playerStatusIndicators">
+
+        <div class="statusItem">Üst Oyuncu: Bekliyor</div>
+        <div class="statusItem">Sol Oyuncu: Bekliyor</div>
+        <div class="statusItem">Sağ Oyuncu: Bekliyor</div>
+        <div class="statusItem">Sen: Hazır</div>
+
+    </div>
+
+</section>
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>

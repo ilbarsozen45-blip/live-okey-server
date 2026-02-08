@@ -1,0 +1,482 @@
+/* =========================
+   CSS 1 (DEV)
+   GENEL SAYFA + ÜST BAR + LOBİ TEMEL TASARIM
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #0e3b2e;
+    color: white;
+    min-height: 100vh;
+}
+
+/* ÜST BAR */
+
+#topBar {
+    width: 100%;
+    height: 70px;
+    background: #06241c;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 25px;
+    border-bottom: 3px solid #0a5c47;
+}
+
+#coinBox {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffd700;
+}
+
+#accountButtons button {
+    margin-left: 10px;
+    padding: 8px 16px;
+    background: #0a5c47;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#accountButtons button:hover {
+    background: #0f7a60;
+}
+
+/* LOBİ */
+
+#lobbyScreen {
+    padding: 30px;
+}
+
+#lobbyScreen h1 {
+    margin-bottom: 20px;
+}
+
+/* MASA KAYDIRMA ALANI */
+
+#tableScrollArea {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding-bottom: 15px;
+}
+
+.tableCard {
+    min-width: 260px;
+    background: #114d3c;
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid #0a5c47;
+}
+
+.tableCard h3 {
+    margin-bottom: 10px;
+}
+
+.tableCard button {
+    margin-top: 10px;
+    padding: 6px 12px;
+    background: #0a5c47;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.tableCard button:hover {
+    background: #0f7a60;
+}
+
+/* AI MASA ÖZEL RENK */
+
+.aiTable {
+    background: #3a114d;
+    border-color: #6a1b9a;
+}
+
+/* MASA OLUŞTUR BUTONU */
+
+#createTableButton {
+    margin-top: 25px;
+    padding: 12px 20px;
+    font-size: 16px;
+    background: #0a5c47;
+    border: none;
+    cursor: pointer;
+}
+
+#createTableButton:hover {
+    background: #0f7a60;
+}
+
+/* MODAL */
+
+.hidden {
+    display: none;
+}
+
+#createTableModal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modalInner {
+    background: #114d3c;
+    padding: 25px;
+    border-radius: 12px;
+    width: 300px;
+}
+
+.modalInner input {
+    width: 100%;
+    margin: 8px 0 15px 0;
+    padding: 6px;
+}
+/* =========================
+   CSS 2 (DEV)
+   MASA KAYDIRMA KONTROLLERİ + CANLI MASA KART DETAYLARI
+========================= */
+
+/* KAYDIRMA OKLARI VE GÖRÜNÜM */
+
+#tableScrollControls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+#scrollLeft,
+#scrollRight {
+    background: #0a5c47;
+    border: none;
+    color: white;
+    font-size: 22px;
+    padding: 10px 14px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+#scrollLeft:hover,
+#scrollRight:hover {
+    background: #0f7a60;
+}
+
+#tableViewport {
+    overflow: hidden;
+    width: 100%;
+}
+
+#tableList {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.25s ease;
+}
+
+/* CANLI MASA KARTI */
+
+.liveTable {
+    min-width: 260px;
+    background: #143f36;
+    border: 2px solid #1e7a63;
+    border-radius: 12px;
+    padding: 14px;
+}
+
+/* MASA BAŞLIK */
+
+.tableHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.tableName {
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.tableRounds {
+    color: #ffd700;
+}
+
+/* OYUNCU SAYISI */
+
+.tablePlayers {
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.playerCount {
+    font-weight: bold;
+}
+
+/* MASA DURUMU */
+
+.tableStatus {
+    font-size: 13px;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.tableStatus.waiting {
+    background: #7a5c00;
+}
+
+.tableStatus.ready {
+    background: #0b7a2a;
+}
+
+/* MASAYA KATIL BUTONU */
+
+.joinTableBtn {
+    width: 100%;
+    padding: 8px;
+    background: #1e7a63;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.joinTableBtn:hover {
+    background: #2aa889;
+}
+
+/* GELİŞMİŞ MASA AYARLARI */
+
+#advancedCreateTable {
+    margin-top: 20px;
+    padding: 15px;
+    background: #0e3b2e;
+    border: 2px dashed #1e7a63;
+    border-radius: 10px;
+}
+
+#advancedCreateTable label {
+    display: block;
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+#advancedCreateTable input,
+#advancedCreateTable select {
+    width: 100%;
+    margin-top: 4px;
+    padding: 6px;
+    background: #143f36;
+    color: white;
+    border: 1px solid #1e7a63;
+    border-radius: 4px;
+}
+/* =========================
+   CSS 3 (DEV)
+   TAM OYUN MASASI + OKEY TAŞLARI + OYUNCU ALANLARI
+========================= */
+
+/* OYUN ALANI GENEL */
+
+#fullGameTableArea {
+    padding: 20px;
+}
+
+/* ÜST BİLGİ BAR */
+
+#gameTopInfo {
+    display: flex;
+    justify-content: space-between;
+    background: #06241c;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+/* MASA ANA YÜZEY */
+
+#okeyMainTable {
+    position: relative;
+    background: #0b5c46;
+    height: 420px;
+    border-radius: 20px;
+    border: 5px solid #083c2e;
+}
+
+/* ORTA ALAN */
+
+#centerZone {
+    position: absolute;
+    top: 45%;
+    left: 45%;
+}
+
+#closedDeck,
+#openDiscard {
+    background: #143f36;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
+
+/* OYUNCU ALANLARI */
+
+.playerArea {
+    position: absolute;
+    background: rgba(0,0,0,0.25);
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.topPlayer {
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.leftPlayer {
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.rightPlayer {
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.bottomPlayer {
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.playerName {
+    font-weight: bold;
+}
+
+.playerScore {
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+/* GİZLİ TAŞLAR */
+
+.hiddenTiles {
+    height: 25px;
+    width: 140px;
+    background: #06241c;
+    border-radius: 4px;
+}
+
+/* SENİN TAŞLARIN */
+
+#myTilesRack {
+    display: flex;
+    gap: 4px;
+    margin-top: 5px;
+}
+
+/* OKEY TAŞ STİLİ */
+
+.tile {
+    width: 32px;
+    height: 45px;
+    background: #ffffff;
+    color: #000;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    border: 2px solid #c9c9c9;
+    cursor: pointer;
+    transition: 0.15s;
+}
+
+.tile:hover {
+    transform: translateY(-6px);
+}
+
+/* ALT KONTROL PANELİ */
+
+#gameControlPanel {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+#gameControlPanel button {
+    padding: 8px 14px;
+    background: #0a5c47;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#gameControlPanel button:hover {
+    background: #0f7a60;
+}
+
+/* SOHBET */
+
+#inGameChat {
+    margin-top: 15px;
+    background: #06241c;
+    padding: 10px;
+    border-radius: 8px;
+    max-width: 300px;
+}
+
+#chatMessages {
+    height: 120px;
+    overflow-y: auto;
+    background: #021914;
+    padding: 5px;
+    margin-bottom: 6px;
+}
+
+.chatMsg {
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.chatMsg.system {
+    color: #ffd700;
+}
+
+#chatInputArea {
+    display: flex;
+    gap: 6px;
+}
+
+#chatInput {
+    flex: 1;
+    padding: 5px;
+}
+
+#sendChatBtn {
+    padding: 5px 10px;
+}
+
+/* DURUM GÖSTERGELERİ */
+
+#playerStatusIndicators {
+    margin-top: 12px;
+}
+
+.statusItem {
+    font-size: 13px;
+    margin-bottom: 3px;
+}

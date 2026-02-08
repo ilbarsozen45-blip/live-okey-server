@@ -442,6 +442,32 @@ function spawnAIBots() {
 
 }
 
+
+function generateRealTiles() {
+
+    const rack = document.getElementById("myTilesRack");
+    if (!rack) return;
+
+    rack.innerHTML = "";
+
+    const colors = ["red","blue","black","orange"];
+
+    for (let i = 0; i < 14; i++) {
+
+        const num = Math.floor(Math.random() * 13) + 1;
+        const color = colors[Math.floor(Math.random() * colors.length)];
+
+        const tile = document.createElement("div");
+        tile.className = "tile " + color;
+        tile.textContent = num;
+
+        rack.appendChild(tile);
+    }
+}
+
+
+
+
 /* =========================
    MASA RENDER EDİLDİ EVENT
 ========================= */
@@ -804,4 +830,15 @@ if (topBar) {
     btn.onclick = () => connectOnline();
     document.getElementById("accountButtons").appendChild(btn);
 }
+
+// Modal kapatma için yedek bağlama (silmeden güçlendirir)
+window.addEventListener("load", () => {
+    const xBtn = document.getElementById("createTableCloseX");
+    if (xBtn) {
+        xBtn.onclick = closeCreateModal; // doğrudan tıklamaya bağla
+    }
+});
+
+window.closeCreateModal = closeCreateModal;
+
 connectOnline("https://live-okey-server-production.up.railway.app");

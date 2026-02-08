@@ -493,3 +493,7 @@ body {
     font-size:22px;
     cursor:pointer;
 }
+.modalClose{
+  z-index: 99999;
+  pointer-events: auto;
+}

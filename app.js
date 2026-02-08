@@ -593,7 +593,7 @@ let onlineMode = false;
    SUNUCUYA BAĞLAN
 ========================= */
 
-function connectOnline(serverURL = "http://localhost:3000") {
+function connectOnline(serverURL = "https://live-okey-server-production.up.railway.app") {
     try {
         socket = io(serverURL, { transports: ["websocket"] });
 
@@ -773,3 +773,4 @@ if (topBar) {
     btn.onclick = () => connectOnline();
     document.getElementById("accountButtons").appendChild(btn);
 }
+connectOnline("https://live-okey-server-production.up.railway.app");

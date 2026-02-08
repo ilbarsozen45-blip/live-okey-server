@@ -325,8 +325,8 @@ function enterGameFromTable(tableId) {
     const table = state.tables.find(t => t.id === tableId);
     if (!table) return;
 
-    document.getElementById("lobbyScreen").classList.add("hidden");
-    document.getElementById("gameScreen").classList.remove("hidden");
+   document.getElementById("lobbyScreen").classList.add("hidden");
+   document.getElementById("fullGameTableArea").classList.remove("hidden");
 
     document.getElementById("gameTableName").textContent = "Masa Adı: " + table.name;
     document.getElementById("gameRoundInfo").textContent = "El: 1 / " + table.rounds;
@@ -357,7 +357,7 @@ const leaveBtn = document.getElementById("leaveTableBtn");
 if (leaveBtn) {
     leaveBtn.addEventListener("click", () => {
 
-        document.getElementById("gameScreen").classList.add("hidden");
+        document.getElementById("fullGameTableArea").classList.add("hidden");
         document.getElementById("lobbyScreen").classList.remove("hidden");
 
     });
@@ -456,7 +456,7 @@ if (aiBtn) {
     aiBtn.addEventListener("click", () => {
 
         document.getElementById("lobbyScreen").classList.add("hidden");
-        document.getElementById("gameScreen").classList.remove("hidden");
+         document.getElementById("fullGameTableArea").classList.remove("hidden");
 
         document.getElementById("gameTableName").textContent = "Yapay Zeka Masası";
         document.getElementById("gameStatus").textContent = "AI Oyuncular Hazır";
@@ -466,7 +466,7 @@ if (aiBtn) {
 createRealOkeyDeck();
 dealTilesToPlayer();
 
-        function generateRealTiles() {
+        function generateRealTiles_UNUSED() {
 
     const rack = document.getElementById("myTilesRack");
     if (!rack) return;
@@ -537,6 +537,7 @@ const originalRenderTables = renderTables;
 renderTables = function() {
     originalRenderTables();
     document.dispatchEvent(new Event("tablesRendered"));
+    
 };
 /* =========================
    JS 4 (DEV)
@@ -819,7 +820,14 @@ joinTable = function (tableId) {
     } else {
         __joinTable_v3(tableId);
     }
+
+    const table = state.tables.find(t=>t.id===tableId);
+
+    if(table && table.players >= 3){
+        enterGameFromTable(tableId);
+    }
 };
+
 
 /* =========================
    SOHBET GÖNDER (ONLINE)
@@ -899,6 +907,32 @@ window.addEventListener("load", () => {
         xBtn.onclick = closeCreateModal; // doğrudan tıklamaya bağla
     }
 });
+
+// const __joinTable_final = joinTable;
+// joinTable = function(tableId){
+  //  __joinTable_final(tableId);
+
+   // const table = state.tables.find(t=>t.id===tableId);
+   // if(table && table.players >= 3){
+   //     enterGameFromTable(tableId);
+  //  }
+//};
+
+
+
+// const __joinTable_hardStart = joinTable;
+// joinTable = function(tableId){
+
+   // __joinTable_hardStart(tableId);
+
+   // const table = state.tables.find(t=>t.id===tableId);
+
+  //  if(table && table.players >= 3){
+   //     enterGameFromTable(tableId);
+  //  }
+// };
+
+
 
 window.closeCreateModal = closeCreateModal;
 
